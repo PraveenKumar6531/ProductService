@@ -12,11 +12,11 @@ public class AuthCommons {
         this.restTemplate = restTemplate;
     }
 
-    public UserDto validateToken(String tokenValue){
-        ResponseEntity<UserDto> responseEntity = restTemplate.getForEntity("http://localhost:4141/users/validate/"+tokenValue, UserDto.class);
-        if(responseEntity.getBody() == null){
-            return null;
-        }
-        return responseEntity.getBody();
-    }
+//    public UserDto validateToken(String tokenValue){
+//        ResponseEntity<UserDto> responseEntity = restTemplate.getForEntity("http://localhost:4141/users/validate/"+tokenValue, UserDto.class);
+//        if(responseEntity.getBody() == null){
+//            return null;
+//        }
+//        return responseEntity.getBody();
+//    }
 }

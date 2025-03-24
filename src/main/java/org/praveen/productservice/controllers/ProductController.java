@@ -24,13 +24,13 @@ public class ProductController {
         this.authCommons = authCommons;
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id,@RequestHeader("auth") String token) throws ProductNotFoundException {
-        UserDto userDto = authCommons.validateToken(token);
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
+        //UserDto userDto = authCommons.validateToken(token);
         ResponseEntity<Product> responseEntity;
-        if(userDto == null){
-            responseEntity = new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-            return responseEntity;
-        }
+//        if(userDto == null){
+//            responseEntity = new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+//            return responseEntity;
+//        }
         Product product = productService.getProductById(id);
 
         responseEntity = new ResponseEntity<>(product, HttpStatus.OK);
