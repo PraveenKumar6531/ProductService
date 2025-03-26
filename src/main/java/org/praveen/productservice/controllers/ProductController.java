@@ -7,6 +7,7 @@ import org.praveen.productservice.models.Category;
 import org.praveen.productservice.models.Product;
 import org.praveen.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +38,9 @@ public class ProductController {
         return responseEntity;
     }
     @GetMapping
-    public List<Product> getAllProducts(){
-        return productService.getAllProducts();
+    public Page<Product> getAllProducts(@RequestParam("pageNumber") int pageNumber,
+                                        @RequestParam("pageSize") int pageSize){
+        return productService.getAllProducts(pageNumber,pageSize,"");
     }
 
     @GetMapping("/cat/{categoryId}")

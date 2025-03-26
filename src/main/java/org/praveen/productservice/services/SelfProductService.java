@@ -8,6 +8,10 @@ import org.praveen.productservice.models.Product;
 import org.praveen.productservice.models.Category;
 import org.praveen.productservice.repositories.CategoryRepository;
 import org.praveen.productservice.repositories.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -33,7 +37,12 @@ public class SelfProductService implements ProductService{
 
     @Override
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return List.of();
+    }
+
+    @Override
+    public Page<Product> getAllProducts(int pageNumber,int pageSize,String sortField) {
+        return productRepository.findAll(PageRequest.of(pageNumber,pageSize, Sort.by("price").ascending()));
     }
 
     @Override

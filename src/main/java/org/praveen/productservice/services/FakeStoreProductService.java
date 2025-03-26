@@ -4,6 +4,7 @@ import org.praveen.productservice.dtos.FakeStoreServiceProductDTO;
 import org.praveen.productservice.exceptions.ProductNotFoundException;
 import org.praveen.productservice.models.Category;
 import org.praveen.productservice.models.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,16 +49,21 @@ public class FakeStoreProductService implements ProductService{
 
     @Override
     public List<Product> getAllProducts() {
-        //int x = 1/0;
-        FakeStoreServiceProductDTO[] fakeStoreServiceProductDTOS = restTemplate.getForObject("https://fakestoreapi.com/products",FakeStoreServiceProductDTO[].class);
-        List<Product> productList = new ArrayList<>();
-        if(fakeStoreServiceProductDTOS == null){
-            return null;
-        }
-        for(FakeStoreServiceProductDTO fakeStoreServiceProductDTO : fakeStoreServiceProductDTOS){
-            productList.add(convertFakeStoreProductDTO(fakeStoreServiceProductDTO));
-        }
-        return productList;
+        return List.of();
+    }
+
+    @Override
+    public Page<Product> getAllProducts(int pageNumber, int pageSize,String sortField) {
+//        //int x = 1/0;
+//        FakeStoreServiceProductDTO[] fakeStoreServiceProductDTOS = restTemplate.getForObject("https://fakestoreapi.com/products",FakeStoreServiceProductDTO[].class);
+//        List<Product> productList = new ArrayList<>();
+//        if(fakeStoreServiceProductDTOS == null){
+//            return null;
+//        }
+//        for(FakeStoreServiceProductDTO fakeStoreServiceProductDTO : fakeStoreServiceProductDTOS){
+//            productList.add(convertFakeStoreProductDTO(fakeStoreServiceProductDTO));
+//        }
+        return null;
     }
 
     @Override
